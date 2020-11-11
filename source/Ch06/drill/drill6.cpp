@@ -19,6 +19,7 @@
 
 #include "../../std_lib_facilities.h"
 double val=0;
+const char number = '8';
 
 //------------------------------------------------------------------------------
 
@@ -87,7 +88,7 @@ Token Token_stream::get()
         cin.putback(ch);         // put digit back into the input stream
         double val;
         cin >> val;              // read a floating-point number
-        return Token('8', val);   // let '8' represent "a number"
+        return Token(number, val);   // let '8' represent "a number"
     }
     default:
         error("Bad token");
@@ -117,7 +118,7 @@ double primary()
         if (t.kind != ')') error("')' expected");
             return d;
     }
-    case '8':            // we use '8' to represent a number
+    case number:            // we use '8' to represent a number
         return t.value;  // return the number's value
     default:
         error("primary expected");
